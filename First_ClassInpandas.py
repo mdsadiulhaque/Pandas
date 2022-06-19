@@ -40,4 +40,10 @@ def meat_2_animal(series):
     else:
         return 'salmon'
 data3['animal'] = data3['food'].map(str.lower).map(meat_to_animal)
+lower = lambda x: x.lower()
+data3['food'] = data3['food'].apply(lower)
+data3['animal2'] = data3.apply(meat_2_animal, axis='columns')
+print(data3)
+data3.assign(new_variable = data3['ounces']*10)
+data3.drop('animal2',axis='columns',inplace=True)
 print(data3)
